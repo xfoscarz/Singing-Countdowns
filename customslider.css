@@ -1,0 +1,69 @@
+.slider {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    background: #f8f8f8;
+    width: 300px;
+    padding: 1rem 2rem;
+    border-radius: 100px;
+    user-select: none;
+}
+
+.slider__fill {
+    width: calc(100% * var(--progress));
+    height: 0.5rem;
+    background: var(--accent-red);
+    border-radius: 100px;
+    cursor: ew-resize;
+}
+
+.slider__thumb {
+    position: relative;
+}
+
+.slider__thumb::after {
+    display: block;
+    top: calc(-0.25rem);
+    left: calc(-0.25rem);
+    position: absolute;
+    content: "";
+    width: 0.5rem;
+    aspect-ratio: 1;
+    background: var(--accent-red);
+    border-radius: 100px;
+    transform: scale(2);
+    transition: transform 0.1s;
+    cursor: ew-resize;
+}
+
+.slider__thumb:hover::after {
+    transform: scale(2.5);
+}
+
+.slider__track {
+    height: 0.5rem;
+    width: calc(100% * (1 - var(--progress)));
+    background: #d9d9d9;
+    border-radius: 100px;
+    cursor: ew-resize;
+}
+
+.slider .slider__play {
+    background-image: url("PlayBtn.svg");
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: center right;
+    aspect-ratio: 1;
+    height: 2.5em;
+    margin-left: 20px;
+    cursor: pointer;
+    transition: transform 0.1s;
+}
+
+.slider .slider__play:hover {
+    transform: scale(1.1);
+}
+
+.slider__play.slider__play--playing {
+    background-image: url("PauseBtn.svg");
+}
