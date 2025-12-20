@@ -2,11 +2,12 @@ import $ from "./$";
 import * as Time from "./Time"
 
 const $time = $<HTMLInputElement>("#time");
+const $day = $<HTMLSelectElement>("#day");
 
 window.addEventListener("load", () => {
     $time.value = Time.currentTimeString();
     
-    $<HTMLButtonElement>(".time-adjust", button => {
+    $<HTMLButtonElement>(".form__time-input-adjustment", button => {
         const LONG_PRESS_ACTIVATION_TIME = 300;
         let longPress = 0;
         let longPressActivation = 0;
@@ -53,3 +54,18 @@ window.addEventListener("load", () => {
         button.addEventListener("mouseup", releasePress);
     });
 });
+
+export function getDate() {
+    const dayMs = 1000 * 60 * 60 * 24;
+    const dayOffset = Number($day.value);
+    const date = new Date(Time.parse($time.value) + dayOffset * dayMs);
+    return date;
+}
+
+export function errorMessage(message: string) {
+    const msg = document.createElement("span");
+    msg.textContent = message;
+    $("#time-errors").appendChild(msg);
+
+    setTimeout(() => msg.remove(), 5000);
+}

@@ -55,6 +55,7 @@ main {
 }
 
 .form__time-inputs {
+    position: relative;
     display: flex;
     gap: 1rem;
     text-align: center;
@@ -73,6 +74,7 @@ main {
     width: 200px;
     appearance: none;
     cursor: pointer;
+    outline: none;
 }
 
 .form__time-inputs > select {
@@ -82,12 +84,76 @@ main {
     background-size: 20px;
 }
 
+.form__time-inputs > select > option {
+    background: #ffffff;
+    border: none;
+}
+
 .form__time-input-adjustments {
     display: flex;
     gap: 0.5em;
     justify-content: center;
     align-items: center;
     padding: 0.5em 0px;
+    opacity: 0;
+    transform: translateY(-10px) scale(0.9);
+    transition: transform 0.5s, opacity 0.2s;
+}
+
+.form__time-input-adjustment {
+    background: #ffffff;
+    border: none;
+    box-shadow: 0px 0px 10px #00000033;
+    font-size: 1.2rem;
+    border-radius: 100px;
+    padding: 0rem 0.7rem;
+    cursor: pointer;
+    transition: transform 0.1s;
+}
+
+.form__time:hover .form__time-input-adjustments {
+    transform: translateY(0px) scale(1);
+    opacity: 1;
+}
+
+.form__time-input-adjustment:hover {
+    transform: scale(1.1);
+}
+
+.form__time-input-adjustment:active {
+    transform: scale(1);
+}
+
+.form__time-errors {
+    position: absolute;
+    font-size: 1.5em;
+    width: 100%;
+    text-align: center;
+    color: var(--accent-red);
+}
+
+.form__time-errors span {
+    position: absolute;
+    width: 100%;
+    left: 0px;
+    animation: fade-away 2s linear forwards;
+}
+
+@keyframes fade-away {
+    from {
+        opacity: 0; bottom: -1em;
+        animation-timing-function: cubic-bezier(0,1,1,1);
+    }
+
+    20%,
+    80% {
+        opacity: 1; bottom: 0.25em;
+        animation-timing-function: cubic-bezier(1,0,1,1);
+    }
+
+    to {
+        opacity: 0; bottom: 1em;
+    }
 }
 
 .form__message-input {
@@ -106,6 +172,11 @@ main {
     border: none;
     border-radius: 10px;
     box-shadow: 0px 0px 10px #00000033;
+    transition: transform 0.5s;
+}
+
+.form__message-input-container:hover {
+    transform: scale(1.02);
 }
 
 .form__message-input-box {
@@ -157,6 +228,10 @@ main {
 
 .form__start:hover {
     transform: scale(1.1);
+}
+
+.form__start:active {
+    transform: scale(1);
 }
 
 .form__start img {

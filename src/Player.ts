@@ -12,5 +12,6 @@ const player = YoutubePlayer("player", {
 });
 
 player.setVolume(25);
+player.pauseVideo();
 
 export { player };

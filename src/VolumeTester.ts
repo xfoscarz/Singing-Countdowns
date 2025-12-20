@@ -8,11 +8,14 @@ $("#volume-test").addEventListener("click", async () => {
     $volumeTesterModal.style.display = "flex";
     $modals.classList.add("active");
     $("#slider").style.setProperty("--progress", (await player.getVolume() / 100).toString());
+    player.pauseVideo();
+    player.seekTo(0, true);
+    player.setLoop(true);
 });
 
 $("#close-modal").addEventListener("click", () => {
-    player.seekTo(0, false);
-    player.stopVideo();
+    player.pauseVideo();
+    player.setLoop(false);
     $volumeTesterModal.style.display = "none";
     $modals.classList.remove("active");
     $("#test-play").classList.remove("slider__play--playing");

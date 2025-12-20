@@ -28,7 +28,6 @@
                 </div>
             </dialog>
 
-            <div id="player"></div>
         </div>
 
         <main>
@@ -41,6 +40,7 @@
                 <div class="form">
                     <div class="form__time">
                         <div class="form__time-inputs">
+                            <span class="form__time-errors" id="time-errors"></span>
                             <input id="time" type="time" step="1">
     
                             <select id="day">
@@ -77,6 +77,8 @@
                 </div>
             </div>
         </main>
+        
+        <div id="player"></div>
 
         <script src="https://www.youtube.com/iframe_api"></script>
         <script type="module" src="/src/main.ts"></script>

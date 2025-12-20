@@ -2,6 +2,18 @@ export function now() {
     return new Date();
 }
 
+export function parse(timeString: string): number {
+    const [ hour, minute, second ] = timeString.split(":");
+
+    const time = now();
+
+    time.setHours(Number(hour));
+    time.setMinutes(Number(minute));
+    time.setSeconds(Number(second));
+
+    return time.getTime();
+}
+
 export function currentTimeString(): string {
     const date = now();
     const [ h, m, s ] = [ date.getHours(), date.getMinutes(), date.getSeconds() ]
