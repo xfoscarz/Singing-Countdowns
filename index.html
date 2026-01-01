@@ -5,8 +5,9 @@
         <meta charset="UTF-8" />
         <link rel="icon" type="image/svg+xml" href="/vite.svg" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <link rel="stylesheet" href="style.css">
         <title>Laufey Countdown</title>
+      <script type="module" crossorigin src="/assets/index-DQrP3I2_.js"></script>
+      <link rel="stylesheet" crossorigin href="/assets/index-DkvbCDd0.css">
     </head>
 
     <body>
@@ -27,11 +28,10 @@
                     <span id="close-modal">Close</span>
                 </div>
             </dialog>
-
         </div>
 
         <main>
-            <div class="setup" id="setup-modal">
+            <div class="setup" id="section-1">
                 <div class="roller-hook animate-roll">
                     <span>Have Laufey count down...</span>
                     <span class="text-roller" id="hook">&nbsp;</span>
@@ -66,8 +66,9 @@
                                 <img src="Volume.svg" alt="">
                             </div>
                             <div class="form__message-input-box">
-                                <input placeholder="Enter a message..." type="text">
+                                <input id="message" placeholder="Enter a message..." type="text">
                             </div>
+                            <div id="suggestions" class="form__message-suggestions"></div>
                         </div>
 
                         <button class="form__start" id="start">
@@ -76,12 +77,29 @@
                     </div>
                 </div>
             </div>
+
+            <div id="allow-content-ap" class="browser-media-allow-play-content">
+                <button id="preset-start">Start Countdown</button>
+                <button id="preset-cancel">Back</button>
+            </div>
+
+            <div class="countdown countdown--layout1" id="countdown">
+                <div class="countdown__init">
+                    <span id="live-clock" class="countdown__clock" id="clock">00:00</span>
+                    <span id="live-time-left" class="countdown__time-left" id="time-left">0m 0s</span>
+                    <button class="countdown__resync" id="resync">Re-sync</button>
+                </div>
+                <div class="countdown__concludes">
+                    <span id="current-date" class="countdown__current-date">January 1, 2000</span>
+                    <span id="conclusion-message" class="countdown__message">Countdown End!</span>
+                    <span id="current-time" class="countdown__current-time">00:00</span>
+                </div>
+                <div id="player"></div>
+            </div>
         </main>
         
-        <div id="player"></div>
 
         <script src="https://www.youtube.com/iframe_api"></script>
-        <script type="module" src="/src/main.ts"></script>
     </body>
 
 </html>
